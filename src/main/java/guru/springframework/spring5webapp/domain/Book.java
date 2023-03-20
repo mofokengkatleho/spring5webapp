@@ -1,6 +1,7 @@
 package guru.springframework.spring5webapp.domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -15,13 +16,13 @@ public class Book {
     @ManyToMany
     @JoinTable(name = "author_book", joinColumns =@JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
-    Set<Author> authorSet ;
+    Set<Author> authorSet = new HashSet<>() ;
 
     public Book(){
 
     }
 
-    public Book(String title, String isbn, Set<Author> authorSet) {
+    public Book(String title, String isbn) {
         this.title = title;
         this.isbn = isbn;
         this.authorSet = authorSet;
